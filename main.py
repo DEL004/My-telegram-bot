@@ -1,4 +1,5 @@
-import os
+import os, threading
+from http.server import SimpleHTTPRequestHandler, HTTPServer
 import asyncio
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
@@ -45,6 +46,9 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, download_and_send))
     print("البوت يعمل الآن بنجاح...")
+    port = int(os.environ.get("PORT", 8000))
+    server = HTTPServer(('0.0.0.0', port), SimpleHTTPRequestHandler)
+    threading.Thread(target=server.serve_forever, daemon=True).start()
     app.run_polling(drop_pending_updates=True)
 
 if __name__ == '__main__':
