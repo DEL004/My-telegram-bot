@@ -4,7 +4,7 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 import yt_dlp
 
-TOKEN = '8956516089:AAFnnPdxU__6zQWVYUyGxlqht7ve-PrIvfs'
+TOKEN = '8956516089:AAFLPMFZ4zIBL76j0UTwanorcH0Lsom19Ho'
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("يامرحباااااا انا بوت من حبيبك عشان تكون حياتك اسهل \nارسلي رابط اي مقطع وبرسله لك بثواني")
